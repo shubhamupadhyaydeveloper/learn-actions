@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_VERSION: 20
-      COMPLETE_TEXT: 'ALL DONE'
+      COMPLETE_TEXT: ${{secrets.COMPLETE_TEXT}}
 
     steps:
       - name: Checkout Code
@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: $NODE_VERSION
+          node-version: ${{env.NODE_VERSION}}
 
       - name: Install deps
         run: npm install 
