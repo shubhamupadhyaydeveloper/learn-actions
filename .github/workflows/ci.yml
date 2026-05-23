@@ -1,10 +1,16 @@
 name: Node Ci
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: 20
+      COMPLETE_TEXT: 'ALL DONE'
 
     steps:
       - name: Checkout Code
@@ -13,10 +19,10 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: $NODE_VERSION
 
       - name: Install deps
         run: npm install 
 
       - name: Complete
-        run: echo "All done"
+        run: echo $COMPLETE_TEXT
