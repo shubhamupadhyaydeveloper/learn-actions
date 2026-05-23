@@ -1,10 +1,20 @@
-name: learning basics
+name: Node Ci
 
 on: push
 
 jobs:
-  hello:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubunto-latest
 
     steps:
-      - run: echo "Hello World"
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+
+      - name: Install deps
+        run: npm install 
+
+      - name: Complete
+        run: echo "All done"
